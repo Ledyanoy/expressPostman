@@ -3,9 +3,11 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const {authenticate} = require('./middlewares/auth')
 const cookieParser = require('cookie-parser')
+const config = require('./config/config').get(process.env.NODE_ENV)
 const app = express()
 
-const mongoURL = 'mongodb+srv://admin:stars44@cluster0.7yid0.mongodb.net/authApp?retryWrites=true&w=majority'
+
+const mongoURL = config.DATABASE
 
 mongoose.connect(mongoURL, {
     useNewUrlParser: true,
